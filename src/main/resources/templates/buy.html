@@ -12,7 +12,7 @@
 </form>
 <table>
     <tr th:each="zakup, Stat : ${listaZakupow}">
-        <td th:text="${Stat.count}"></td>
+        <td    th:text="${Stat.count}"></td>
         <td th:text="${zakup.getOpis()}"></td>
         <td> <a th:href="@{/delete/{id} (id=${(Stat.count)})}">Kasuj</a></td>
         <td> <a th:href="@{/edit/{id} (id=${(Stat.count)})}">Edytuj</a></td>

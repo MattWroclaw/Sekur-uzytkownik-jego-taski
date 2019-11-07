@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wszyscy klienci</title>
+</head>
+<body>
+<h3>Lista wszystkich klientów</h3>
+<table>
+    <tr th:each="klient, Stat : ${wszyscyKlienci}">
+        <td th:text="${Stat.count} +'|'"></td>
+        <td th:text="' id: '+ ${klient.id} +'|'"></td>
+        <td th:text="' mail:'+ ${klient.email} +'|'"></td>
+        <td th:text="' haslo:' + ${klient.password} +'|'"></td>
+        <td><a th:href="@{/editKlient/{id}(id=${klient.id})}">Edytuj klienta</a></td>
+        <td><a th:href="@{/deleteKlient/{id}(id=${klient.id})}">Skasuj klienta</a></td>
+    </tr>
+</table>
+</body>
+</html>

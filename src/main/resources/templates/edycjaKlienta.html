@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytowanie danych klienta</title>
+</head>
+<body>
+    <form action="#" th:action="@{/editKlient/{id}(id=${edytowany})}" method="post" th:object="${edytowany}">
+<!--      Imie:  <input type="text" th:field="*{name}">-->
+      Mail:  <input type="text" th:field="*{email}">
+      Haslo:  <input type="text" th:field="*{password}">
+        <input type="submit" value="Zapisz">
+    </form>
+</body>
+</html>
