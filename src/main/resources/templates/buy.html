@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Twoje zakupy</title>
+</head>
+<body>
+<p th:insert="fragments :: wyloguj"></p>
+<form action="#" th:action="@{/formularzZakupowy}" method="post" th:object="${nowyZakup}">
+    OPIS: <input type="text" th:field="*{opis}">
+    <input type="submit" value="Dodaj zakup">
+</form>
+<table>
+    <tr th:each="zakup, Stat : ${listaZakupow}">
+        <td th:text="${Stat.count}"></td>
+        <td th:text="${zakup.getOpis()}"></td>
+        <td> <a th:href="@{/delete/{id} (id=${(Stat.count)})}">Kasuj</a></td>
+        <td> <a th:href="@{/edit/{id} (id=${(Stat.count)})}">Edytuj</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja zakupu</title>
+</head>
+Edytujesz zakup <p th:text="${edytowany.opis}"></p>
+<body>
+    <form action="#" th:action="@{/update/{id} (id=${edytowany.getId()})}" method="post" th:object="${edytowany}">
+        Nowy opis: <input type="text" th:field="${edytowany.opis}">
+        <input type="submit" value="Zmien">
+    </form>
+</body>
+</html>
