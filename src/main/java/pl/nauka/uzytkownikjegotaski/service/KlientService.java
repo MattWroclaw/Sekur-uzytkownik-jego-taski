@@ -47,10 +47,26 @@ public class KlientService {
         return szukanyKlient;
     }
 
-    public void zapiszKlienta(KlientDto klientDto, Long id){
+    public Klient zapiszKlienta(KlientDto klientDto, Long id){
         Klient encja = klientRepository.findById(id)
                 .orElseThrow(()-> new NoSuchElementException("Nie ma klienta o id: "+id));
         encja.setName(klientDto.getName());
         encja.setEmail(klientDto.getEmail());
+        return encja;
+    }
+
+    public Klient zapiszKlientaEncja(Klient klientEdytowany){
+        Klient encja = klientRepository.findById(klientEdytowany.getId())
+                .orElseThrow(()-> new NoSuchElementException("Nie ma klienta o id: "+klientEdytowany.getId()
+                +klientEdytowany.getPassword()));
+        encja.setEmail(klientEdytowany.getEmail());
+        encja.setName(klientEdytowany.getName());
+        encja.setPassword(klientEdytowany.getPassword());
+        klientRepository.save(encja);
+        return encja;
+    }
+
+    public List<Klient> findAll(){
+        return klientRepository.findAll();
     }
 }

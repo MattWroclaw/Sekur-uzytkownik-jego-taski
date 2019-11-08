@@ -5,10 +5,11 @@
     <title>Edytowanie danych klienta</title>
 </head>
 <body>
-    <form action="#" th:action="@{/editKlient/{id}(id=${edytowany})}" method="post" th:object="${edytowany}">
-<!--      Imie:  <input type="text" th:field="*{name}">-->
+    <form action="#" th:action="@{/updateKlient}" method="post" th:object="${edytowany}">
+      Imie:  <input type="text" th:field="*{name}">
       Mail:  <input type="text" th:field="*{email}">
       Haslo:  <input type="text" th:field="*{password}">
+      Id:  <input type="hidden" th:field="*{id}">
         <input type="submit" value="Zapisz">
     </form>
 </body>

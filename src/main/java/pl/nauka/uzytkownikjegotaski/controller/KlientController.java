@@ -50,17 +50,20 @@ public class KlientController {
     }
 //  3. edycja klienta
     @RequestMapping(value = "/editKlient/{id}", method = RequestMethod.GET)
-    public String edycjaKlienta(@PathVariable("id") long id, Model model){
+    public String edycjaKlienta(@PathVariable("id")long id, Model model){
         Klient klientById = klientService.findKlientById(id);
         model.addAttribute("edytowany", klientById);
         return "edycjaKlienta";
     }
 
-    @RequestMapping(value = "/editKlient/{id}", method = RequestMethod.POST)
-    public String formularzEdycji(@PathVariable long id, @ModelAttribute KlientDto klientFormularz, Model model){
-        model.addAttribute("wyedytowany", klientFormularz);
-        klientService.zapiszKlienta(klientFormularz, id);
-        return "/editKlient/{id}";
+    @RequestMapping(value = "/updateKlient", method = RequestMethod.POST)
+    public String formularzEdycji(@ModelAttribute Klient klientForm){
+//        model.addAttribute("wyedytowany", klientForm);
+//        List<Klient> klients = klientService.findAll();
+//        model.addAttribute("wszyscyKlienci", klients);
+        klientService.zapiszKlientaEncja(klientForm);
+
+        return "redirect:/klienci";
     }
 
 
